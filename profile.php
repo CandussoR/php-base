@@ -1,5 +1,6 @@
 <?php
 $title = "Profile";
+$description = "A quick description of me";
 include 'header.php';
 ?>
 
