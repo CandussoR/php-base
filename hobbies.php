@@ -1,7 +1,6 @@
-
 <?php
 $title = 'Hobbies';
-$description = "A quick glance over my hobbies";
+$description = 'A quick glance over my hobbies';
 include 'header.php';
 ?>
 

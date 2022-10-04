@@ -1,6 +1,6 @@
 <?php
 $title = 'Default page';
-$meta = 'A page with nothing on it';
+$description = 'A page with nothing on it';
 require 'header.php'
 ?>
 
