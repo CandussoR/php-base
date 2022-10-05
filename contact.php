@@ -22,34 +22,34 @@ $messageError = "Message must be at least 5 characters. Say \"Bravo\" !";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // title validation
-    if ($_POST['title'] && in_array($_POST['title'], ['mr', 'madam', 'complicated'])) {
+    if (filter_has_var(INPUT_POST, 'title') && in_array($_POST['title'], ['mr', 'madam', 'complicated'])) {
         $title = $_POST['title'];
     }
 
     // name validation
     $rawFirstname = trim(htmlspecialchars($_POST["firstname"]));
-    if ($rawFirstname) {
+    if (filter_has_var(INPUT_POST, 'firstname') && $rawFirstname) {
         $firstname = $rawFirstname;
     }
     $rawLastname = trim(htmlspecialchars($_POST["lastname"]));
-    if ($rawLastname) {
+    if (filter_has_var(INPUT_POST, 'lastname') && $rawLastname) {
         $lastname = $rawLastname;
     }
 
     // email validation
-    if (filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
-        $email = filter_var($_POST["email"], FILTER_VALIDATE_EMAIL);
+    if (filter_has_var(INPUT_POST, 'email') && filter_input($_POST["email"], FILTER_VALIDATE_EMAIL)) {
+        $email = $_POST["email"];
     }
 
     // radio button validation
     $raw_reason = $_POST["reason"];
-    if ($_POST["reason"] && in_array($_POST["reason"], ['angry', 'furious'])) {
+    if (filter_has_var(INPUT_POST, 'reason') && in_array($_POST["reason"], ['angry', 'furious'])) {
         $reason = $_POST["reason"];
     }
 
     // validate message length
     $raw_message = $_POST["message"];
-    if (strlen($raw_message) > 5) {
+    if (filter_has_var(INPUT_POST, 'message') && strlen($raw_message) > 5) {
         $message = htmlspecialchars($raw_message);
     }
 
